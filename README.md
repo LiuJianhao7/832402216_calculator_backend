@@ -114,7 +114,7 @@ Tests cover core expressions, precedence, parentheses, decimals, unary plus/minu
 2. Run:
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/832402216_calculator_backend.git
+git clone https://github.com/LiuJianhao7/832402216_calculator_backend.git
 ```
 
 3. Open **Web** → **Add a new web app** → select **Manual configuration** → Python 3.x.
@@ -124,7 +124,7 @@ git clone https://github.com/YOUR_GITHUB_USERNAME/832402216_calculator_backend.g
 import os
 import sys
 
-project_src = '/home/YOUR_PYTHONANYWHERE_USERNAME/832402216_calculator_backend/src'
+project_src = '/home/LiuJianhao/832402216_calculator_backend/src'
 if project_src not in sys.path:
     sys.path.insert(0, project_src)
 
@@ -138,7 +138,7 @@ from app import application
 6. Open:
 
 ```text
-https://YOUR_PYTHONANYWHERE_USERNAME.pythonanywhere.com/health
+https://LiuJianhao.pythonanywhere.com/health
 ```
 
 If you see `success: true`, the deployment succeeded.
@@ -149,4 +149,4 @@ If you see `success: true`, the deployment succeeded.
 ## Frontend/Backend Connection
 
 For local development, the frontend `config.js` automatically uses `http://127.0.0.1:5000`.
-For production deployment, replace `https://YOUR_USERNAME.pythonanywhere.com` in `config.js` with the real backend domain, then push the frontend repository and enable GitHub Pages.
+For production deployment, replace `https://LiuJianhao.pythonanywhere.com` in `config.js` with the real backend domain, then push the frontend repository and enable GitHub Pages.
