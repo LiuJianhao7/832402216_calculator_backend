@@ -2,7 +2,7 @@
 
 Backend project: Software Engineering Practice Assignment 1 — a frontend/backend separated calculator.
 
-- Student: 刘鉴浩 (Liu Jianhao)
+- Student: Liu Jianhao
 - Student ID: 832402216
 - Tech stack: Python 3.10+ / WSGI / SQLite / unittest
 - Runtime dependencies: **Python standard library only, no third-party runtime dependencies**
