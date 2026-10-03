@@ -1,37 +1,37 @@
 # 832402216 Calculator Backend
 
-后端项目：软件工程实践第一次作业——前后端分离计算器。
+Backend project: Software Engineering Practice Assignment 1 — a frontend/backend separated calculator.
 
-- 学生：刘鉴浩（Liu Jianhao）
-- 学号：832402216
-- 技术栈：Python 3.10+ / WSGI / SQLite / unittest
-- 运行依赖：**仅 Python 标准库，无第三方运行依赖**
-- 核心原则：浏览器不计算最终结果；表达式解析、异常处理、历史持久化全部在后端完成。
+- Student: 刘鉴浩 (Liu Jianhao)
+- Student ID: 832402216
+- Tech stack: Python 3.10+ / WSGI / SQLite / unittest
+- Runtime dependencies: **Python standard library only, no third-party runtime dependencies**
+- Core principle: the browser does not compute the final result; expression parsing, error handling, and history persistence are all done on the backend.
 
-## 功能
+## Features
 
-- 四则运算：`+ - * /`
-- 复合表达式与运算符优先级
-- 括号
-- 小数
-- 一元正负号（如 `-5 + 8`、`3 * -2`）
-- 非法表达式检测
-- 除零检测
-- SQLite 持久化计算历史
-- 查询、搜索、单条删除、清空历史
-- 统计历史总数
-- CORS 支持
-- 不使用 `eval` / `exec`
+- Basic arithmetic: `+ - * /`
+- Compound expressions and operator precedence
+- Parentheses
+- Decimals
+- Unary plus/minus (e.g. `-5 + 8`, `3 * -2`)
+- Invalid expression detection
+- Division by zero detection
+- SQLite-persisted calculation history
+- Query, search, delete a single entry, clear history
+- Statistics for the total history count
+- CORS support
+- Does not use `eval` / `exec`
 
-## 项目结构
+## Project Structure
 
 ```text
 832402216_calculator_backend/
 ├── src/
 │   ├── app.py          # WSGI HTTP/JSON API
-│   ├── database.py     # SQLite 数据访问
-│   ├── parser.py       # 安全递归下降表达式解析器
-│   └── run.py          # 本地开发入口
+│   ├── database.py     # SQLite data access
+│   ├── parser.py       # Safe recursive descent expression parser
+│   └── run.py          # Local development entry point
 ├── tests/
 │   ├── conftest.py
 │   ├── test_api.py
@@ -41,33 +41,33 @@
 └── codestyle.md
 ```
 
-## 本地启动
+## Local Startup
 
-无需安装 Flask 或其他第三方包：
+No need to install Flask or any other third-party packages:
 
 ```bash
 cd 832402216_calculator_backend
 python src/run.py
 ```
 
-默认地址：`http://127.0.0.1:5000`
+Default address: `http://127.0.0.1:5000`
 
-健康检查：`GET http://127.0.0.1:5000/health`
+Health check: `GET http://127.0.0.1:5000/health`
 
-SQLite 文件默认自动创建在：`data/calculator.db`。
+The SQLite file is automatically created by default at `data/calculator.db`.
 
 ## API
 
 | Method | Path | Purpose |
 |---|---|---|
-| `GET` | `/health` | 健康检查 |
-| `POST` | `/api/calculate` | 后端解析并计算表达式，成功后保存历史 |
-| `GET` | `/api/history` | 查询历史记录，可用 `?search=关键词` |
-| `DELETE` | `/api/history/<id>` | 删除指定历史 |
-| `DELETE` | `/api/history` | 清空全部历史（扩展功能） |
-| `GET` | `/api/stats` | 查询历史数量（扩展功能） |
+| `GET` | `/health` | Health check |
+| `POST` | `/api/calculate` | Parse and calculate the expression on the backend, and save it to history on success |
+| `GET` | `/api/history` | Query history records; supports `?search=keyword` |
+| `DELETE` | `/api/history/<id>` | Delete a specific history entry |
+| `DELETE` | `/api/history` | Clear all history (extended feature) |
+| `GET` | `/api/stats` | Query the history count (extended feature) |
 
-计算请求示例：
+Example calculation request:
 
 ```json
 {
@@ -75,7 +75,7 @@ SQLite 文件默认自动创建在：`data/calculator.db`。
 }
 ```
 
-成功响应示例：
+Example successful response:
 
 ```json
 {
@@ -91,34 +91,34 @@ SQLite 文件默认自动创建在：`data/calculator.db`。
 }
 ```
 
-## 环境变量
+## Environment Variables
 
 | Name | Default | Meaning |
 |---|---|---|
-| `CALCULATOR_DB_PATH` | `data/calculator.db` | SQLite 数据库文件位置 |
-| `ALLOWED_ORIGINS` | `*` | CORS 允许的前端来源，多个来源用逗号分隔 |
+| `CALCULATOR_DB_PATH` | `data/calculator.db` | Location of the SQLite database file |
+| `ALLOWED_ORIGINS` | `*` | Frontend origins allowed by CORS; separate multiple origins with commas |
 
-正式部署时，建议把 `ALLOWED_ORIGINS` 改成你的 GitHub Pages 地址。
+For production deployment, it is recommended to change `ALLOWED_ORIGINS` to your GitHub Pages URL.
 
-## 自动测试
+## Automated Tests
 
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-测试覆盖核心表达式、优先级、括号、小数、一元正负号、除零、非法输入、真实 HTTP API、历史写入和删除。
+Tests cover core expressions, precedence, parentheses, decimals, unary plus/minus, division by zero, invalid input, the real HTTP API, and history write/delete.
 
-## PythonAnywhere 部署
+## PythonAnywhere Deployment
 
-1. 在 PythonAnywhere 创建账号并打开 Bash Console。
-2. 执行：
+1. Create an account on PythonAnywhere and open a Bash Console.
+2. Run:
 
 ```bash
 git clone https://github.com/YOUR_GITHUB_USERNAME/832402216_calculator_backend.git
 ```
 
-3. 打开 **Web** → **Add a new web app** → 选择 **Manual configuration** → Python 3.x。
-4. 打开该 Web App 的 **WSGI configuration file**，将内容中的项目部分改为：
+3. Open **Web** → **Add a new web app** → select **Manual configuration** → Python 3.x.
+4. Open the Web App's **WSGI configuration file** and change the project part to:
 
 ```python
 import os
@@ -128,25 +128,25 @@ project_src = '/home/YOUR_PYTHONANYWHERE_USERNAME/832402216_calculator_backend/s
 if project_src not in sys.path:
     sys.path.insert(0, project_src)
 
-# 可选：上线后把 * 换成你的 GitHub Pages 域名
+# Optional: replace * with your GitHub Pages domain after going live
 os.environ['ALLOWED_ORIGINS'] = '*'
 
 from app import application
 ```
 
-5. 点击 **Reload**。
-6. 打开：
+5. Click **Reload**.
+6. Open:
 
 ```text
 https://YOUR_PYTHONANYWHERE_USERNAME.pythonanywhere.com/health
 ```
 
-看到 `success: true` 即部署成功。
-7. 把前端 `src/config.js` 的线上 API 地址改成该域名。
+If you see `success: true`, the deployment succeeded.
+7. Change the production API URL in the frontend `src/config.js` to that domain.
 
-> SQLite 位于 PythonAnywhere 用户目录的持久化文件系统中，因此页面刷新、浏览器重开以及 Web App Reload 后，历史仍保留。
+> SQLite resides in the persistent file system of the PythonAnywhere user directory, so history is still retained after page refreshes, browser restarts, and Web App Reloads.
 
-## 前后端连接
+## Frontend/Backend Connection
 
-本地开发时，前端 `config.js` 自动使用 `http://127.0.0.1:5000`。
-线上部署时，把 `config.js` 中的 `https://YOUR_USERNAME.pythonanywhere.com` 替换为真实后端域名，再推送前端仓库并启用 GitHub Pages。
+For local development, the frontend `config.js` automatically uses `http://127.0.0.1:5000`.
+For production deployment, replace `https://YOUR_USERNAME.pythonanywhere.com` in `config.js` with the real backend domain, then push the frontend repository and enable GitHub Pages.
